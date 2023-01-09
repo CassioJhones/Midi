@@ -1,27 +1,39 @@
-// função que chama codigos para dar play no POM
-function tocaSomPom() {
-    document.querySelector('#som_tecla_pom').play();
+// função que chama codigos para dar play
+function tocaSom(idElementoAudio) {
+
+    document.querySelector(idElementoAudio).play();
 }
 
 //CONSTANTE lista de teclas guardando o codigo querryALL para todas as teclas
 const listaDeTeclas = document.querySelectorAll('.tecla');
-listaDeTeclas[0].onclick = tocaSomPom;
+
+let contador = 0;
+//loop while = enquanto
+//enquanto contador for menor que 9 ele se repete.
+
+
+while(contador < listaDeTeclas.length) {
+
+    const tecla = listaDeTeclas[contador];
+    const instrumento = tecla.classList[1];
+    const idAudio = `#som_${instrumento}`;
+
+    console.log('Nome da Classe: '+ instrumento);
+    
+    tecla.onclick = function() {
+        tocaSom(idAudio);
+    };
+    contador++;
+    
+    console.log('Contagem ' + contador);
+    console.log(idAudio);
+} 
+
+// string dinamica é com acento craze e com $ na parte mutavel
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+//classlist mostra as classes de algo
 
 /* tecla de cada vez : jeito errado de se fazer:
 demora muito e demora a amnutenção e escrita do codigo
