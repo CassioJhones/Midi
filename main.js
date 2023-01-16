@@ -1,33 +1,39 @@
-    //------ PLAY NO AUDIO ------
-function tocaSom(seletorAudio) {
+function tocaSom (seletorAudio) {
     const elemento = document.querySelector(seletorAudio);
 
-// ------ TRATAMENTO DE ERROS ------
-    if (elemento != null && elemento.localname === 'audio')
-     { elemento.play(); }
-        else{ console.log(' ELEMENTO NAO ENCONTRADO ') }
-    } // ------ TRATAMENTO DE ERROS ------
+    if (elemento && elemento.localName === 'audio') {
+        elemento.play();
+    }
+    else {
+        //alert('Elemento não encontrado');
+        console.log('Elemento não encontrado ou seletor inválido');
+    }
+
+}
+
 const listaDeTeclas = document.querySelectorAll('.tecla');
-   
-//------FOR = { variavel ; condição; incremento }
-for(let contador=0; contador < listaDeTeclas.length; contador++) {
+
+//para
+for (let contador = 0; contador < listaDeTeclas.length; contador++) {
 
     const tecla = listaDeTeclas[contador];
     const instrumento = tecla.classList[1];
-    const idAudio = `#som_${instrumento}`; //------TEMPLATE STRING
+    const idAudio = `#som_${instrumento}`; //template string
 
-    tecla.onclick = function() {
+    tecla.onclick = function () {
         tocaSom(idAudio);
     }
-    //---------- AO PRESSIONAR TECLA --------
+
     tecla.onkeydown = function (evento) {
-        //---------- SOMENTE SE A TECLA FOR 'ESPAÇO' OU 'ENTER' --------
+
         if (evento.code === 'Space' || evento.code === 'Enter') {
             tecla.classList.add('ativa');
         }
+
     }
-    //---------- AO SOLTAR TECLA ------------
-    tecla.onkeyup = function(){
-        tecla.classList.remove('ativa')
+
+    tecla.onkeyup = function () {
+        tecla.classList.remove('ativa');
     }
-} 
+
+}
